@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scientific Calculator</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-default">
+        <div class="container">
+            <ul class="nav navbar-nav">
+                <li><a href="/">Home</a></li>
+                <li><a href="/basic_calculator">Basic Calculator</a></li>
+                <li><a href="/scientific_calculator">Scientific Calculator</a></li>
+            </ul>
+        </div>
+    </nav>
+    <div class="row">
+        <div class="col-md-4"></div>
+        <div class="col-md-4"><legend><h1>SCIENTIFIC CALCULATOR</h1></legend></div>
+        <div class="col-md-4"></div>
+    </div>
+    <br>
+    <div class="row">
+        <div class="col-md-4"></div>
+        <div class="col-md-4">
+            <form class="form-horizontal" method="post">
+                <div class="form-group">
+                    <label class="control-label col-xs-3" for="var_1">Number1 :</label>
+                    <div class="col-xs-7">
+                        <input type="text" class="form-control" name="var_1" value="{{ request.form['var_1'] }}" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-xs-3">Operation:</label>
+                    <div class="col-xs-7">
+                        <select class="form-control" name="operation" id="select_operation" required>
+                            <option value="">select...</option>
+                            <option value="Sin" {% if selected_operation == 'Sin' %}selected{% endif %}>Sin</option>
+                            <option value="Cos" {% if selected_operation == 'Cos' %}selected{% endif %}>Cos</option>
+                            <option value="Tan" {% if selected_operation == 'Tan' %}selected{% endif %}>Tan</option>
+                            <option value="SquareRoot" {% if selected_operation == 'SquareRoot' %}selected{% endif %}>Square Root</option>
+                            <option value="Square" {% if selected_operation == 'Square' %}selected{% endif %}>Square</option>
+                            <option value="Cube" {% if selected_operation == 'Cube' %}selected{% endif %}>Cube</option>
+                            <option value="Log" {% if selected_operation == 'Log' %}selected{% endif %}>Log</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <div class="col-xs-offset-3 col-xs-9">
+                        <input type="submit" class="btn btn-success" value="Calculate">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-xs-3">Result :</label>
+                    <div class="col-xs-7">
+                        <input type="text" name="result" class="form-control" placeholder="{{ entry }}" readonly>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="col-md-4"></div>
+    </div>
+</body>
+</html>
